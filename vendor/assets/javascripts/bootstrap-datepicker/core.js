@@ -1393,8 +1393,16 @@
 					// As such, its behavior should not be hijacked.
 					break;
 				case 13: // enter
+					focusDate = this.focusDate || this.dates.get(-1) || this.viewDate;
+					var cls = this.getClassNames(focusDate);
+					console.log(cls)
+					if ($.inArray("disabled", cls) > -1) {
+						e.preventDefault();
+						e.stopPropagation();
+						break;
+					}
 					if (!this.o.forceParse) {
-							break;
+						break;
 					}
 					focusDate = this.focusDate || this.dates.get(-1) || this.viewDate;
 					if (this.o.keyboardNavigation) {
